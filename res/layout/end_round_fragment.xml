@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:text="@string/end_of_round1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="50sp"
+        >
+    </TextView>
+    <TextView
+        android:text="@string/end_of_round2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3"
+        android:gravity="center"
+        android:textSize="50sp"
+        >
+    </TextView>
+    
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="3" 
+        >
+        <Button
+            android:id="@+id/blueTeamButton"
+            android:text="@string/blue_team_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#0000FF"
+			android:textColor="#FFFFFF"
+            >
+        </Button>
+        <Button
+            android:id="@+id/redTeamButton"
+            android:text="@string/red_team_button"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#F00000"
+			android:textColor="#FFFFFF"
+            >
+        </Button>
+    </LinearLayout>
+   	
+</LinearLayout>
