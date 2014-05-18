@@ -14,6 +14,10 @@
     <string name="end_of_round2">Which team scored?</string>
     <string name="blue_team_button">Blue Team</string>
     <string name="red_team_button">Red Team</string>
+    <string name="rebuttal1">Rebuttal</string>
+    <string name="rebuttal2">\?</string>
+    <string name="no_rebuttal_button">No</string>
+    <string name="yes_rebuttal_button">Yes</string>
     
     <string name="rules">
     This is CatchPhrase!  It is like a game of hot potato and charades!

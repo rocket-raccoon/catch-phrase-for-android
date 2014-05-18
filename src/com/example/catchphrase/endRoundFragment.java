@@ -1,6 +1,7 @@
 package com.example.catchphrase;
 
 import android.app.Fragment;
+import android.app.FragmentManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,6 +18,14 @@ public class endRoundFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 	}
 	
+	public void selectRoundWinner() {
+		FragmentManager fm = getActivity().getFragmentManager();
+		Fragment fragment = new rebuttalFragment();
+		fm.beginTransaction()
+			.replace(R.id.fragmentContainer, fragment)
+			.commit();
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.end_round_fragment, parent, false);
@@ -25,7 +34,7 @@ public class endRoundFragment extends Fragment {
 		redTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-						
+				selectRoundWinner();
 			}
 		});
 		
@@ -33,7 +42,7 @@ public class endRoundFragment extends Fragment {
 		blueTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-						
+				selectRoundWinner();
 			}
 		});
 		
