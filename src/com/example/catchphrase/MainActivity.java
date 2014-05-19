@@ -13,12 +13,7 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 	
-	@Override
-	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_main);
-		getActionBar().setDisplayHomeAsUpEnabled(true);
-		
+	public void setHomePage() {
 		FragmentManager fm = getFragmentManager();
 		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 		if(fragment == null) {
@@ -26,7 +21,21 @@ public class MainActivity extends Activity {
 			fm.beginTransaction()
 				.add(R.id.fragmentContainer, fragment)
 				.commit();
-		}	
+		}
+		else{
+			fragment = new homeFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+	}
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_main);
+		getActionBar().setDisplayHomeAsUpEnabled(true);
+		setHomePage();
 	}
 	
 	@Override
@@ -34,11 +43,7 @@ public class MainActivity extends Activity {
 	    switch (item.getItemId()) {
 	    	// Respond to the action bar's Up/Home button
 	    	case android.R.id.home:
-	    		FragmentManager fm = getFragmentManager();
-	    		Fragment fragment = new homeFragment();
-	    		fm.beginTransaction()
-	    			.replace(R.id.fragmentContainer, fragment)
-	    			.commit();
+	    		setHomePage();
 	    		return true;
 	    }
 	    return super.onOptionsItemSelected(item);

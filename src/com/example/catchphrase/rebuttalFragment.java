@@ -18,12 +18,21 @@ public class rebuttalFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 	}
 	
-	public void startNextRound() {
-		FragmentManager fm = getActivity().getFragmentManager();
-		Fragment fragment = new standingsFragment();
-		fm.beginTransaction()
-			.replace(R.id.fragmentContainer, fragment)
-			.commit();
+	public void viewStandings() {
+		FragmentManager fm = getFragmentManager();
+		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+		if(fragment == null) {
+			fragment = new standingsFragment();
+			fm.beginTransaction()
+				.add(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+		else{
+			fragment = new standingsFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}
 	}
 	
 	@Override
@@ -34,7 +43,7 @@ public class rebuttalFragment extends Fragment {
 		yesButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startNextRound();
+				viewStandings();
 			}
 		});
 		
@@ -42,7 +51,7 @@ public class rebuttalFragment extends Fragment {
 		noButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				startNextRound();
+				viewStandings();
 			}
 		});
 		

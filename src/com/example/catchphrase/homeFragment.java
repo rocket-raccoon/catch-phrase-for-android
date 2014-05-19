@@ -21,6 +21,40 @@ public class homeFragment extends Fragment {
 		super.onCreate(savedInstanceState);
 	}
 	
+	public void goToRules() {
+		FragmentManager fm = getFragmentManager();
+		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+		if(fragment == null) {
+			fragment = new rulesFragment();
+			fm.beginTransaction()
+				.add(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+		else {
+			fragment = new rulesFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+	}
+	
+	public void startGame() {
+		FragmentManager fm = getFragmentManager();
+		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+		if(fragment == null) {
+			fragment = new gameFragment();
+			fm.beginTransaction()
+				.add(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+		else {
+			fragment = new gameFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+	}
+	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup parent, Bundle savedInstanceState) {
 		View v = inflater.inflate(R.layout.home_fragment, parent, false);
@@ -29,23 +63,13 @@ public class homeFragment extends Fragment {
 		mStartGameButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FragmentManager fm = getFragmentManager();
-				Fragment fragment = new gameFragment();
-				fm.beginTransaction()
-					.replace(R.id.fragmentContainer, fragment)
-					.addToBackStack(null)
-					.commit();	
+				startGame();	
 			}
 		});
 		mRulesButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FragmentManager fm = getFragmentManager();
-				Fragment fragment = new rulesFragment();
-				fm.beginTransaction()
-					.replace(R.id.fragmentContainer, fragment)
-					.addToBackStack(null)
-					.commit();
+				goToRules();
 			}
 		});
 		return v;

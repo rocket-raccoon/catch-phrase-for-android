@@ -19,11 +19,20 @@ public class endRoundFragment extends Fragment {
 	}
 	
 	public void selectRoundWinner() {
-		FragmentManager fm = getActivity().getFragmentManager();
-		Fragment fragment = new rebuttalFragment();
-		fm.beginTransaction()
-			.replace(R.id.fragmentContainer, fragment)
-			.commit();
+		FragmentManager fm = getFragmentManager();
+		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+		if(fragment == null) {
+			fragment = new rebuttalFragment();
+			fm.beginTransaction()
+				.add(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+		else {
+			fragment = new rebuttalFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}
 	}
 	
 	@Override

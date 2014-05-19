@@ -20,6 +20,23 @@ public class gameFragment extends Fragment {
 	private int maxSkipsAllowed = 2;
 	private wordBank words = new wordBank();
 	
+	public void endRound() {
+		FragmentManager fm = getFragmentManager();
+		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
+		if(fragment == null) {
+			fragment = new endRoundFragment();
+			fm.beginTransaction()
+				.add(R.id.fragmentContainer, fragment)
+				.commit();
+		}
+		else {
+			fragment = new endRoundFragment();
+			fm.beginTransaction()
+				.replace(R.id.fragmentContainer, fragment)
+				.commit();
+		}	
+	}
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -50,12 +67,7 @@ public class gameFragment extends Fragment {
 		nextButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				FragmentManager fm = getActivity().getFragmentManager();
-				Fragment fragment = new endRoundFragment();
-				fm.beginTransaction()
-					.replace(R.id.fragmentContainer, fragment)
-					.addToBackStack(null)
-					.commit();
+				endRound();
 			}
 		});
 		
