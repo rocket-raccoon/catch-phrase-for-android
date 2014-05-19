@@ -29,14 +29,17 @@ public final class R {
         public static final int red_button=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f08000b;
+        public static final int action_settings=0x7f08000e;
         public static final int blueTeamButton=0x7f080001;
+        public static final int blue_team_score=0x7f08000b;
         public static final int currentPhrase=0x7f080003;
+        public static final int current_round=0x7f08000d;
         public static final int fragmentContainer=0x7f080000;
         public static final int nextButton=0x7f080006;
         public static final int noRebuttalButton=0x7f080009;
         public static final int pauseButton=0x7f080004;
         public static final int redTeamButton=0x7f080002;
+        public static final int red_team_score=0x7f08000c;
         public static final int rulesButton=0x7f080008;
         public static final int skipButton=0x7f080005;
         public static final int startGameButton=0x7f080007;
@@ -50,6 +53,7 @@ public final class R {
         public static final int home_fragment=0x7f030004;
         public static final int rebuttal_fragment=0x7f030005;
         public static final int rules_fragment=0x7f030006;
+        public static final int standings_fragment=0x7f030007;
     }
     public static final class menu {
         public static final int main=0x7f070000;
@@ -58,15 +62,22 @@ public final class R {
         public static final int action_settings=0x7f050001;
         public static final int app_name=0x7f050000;
         public static final int blue_team_button=0x7f05000b;
+        public static final int blue_team_score=0x7f050012;
+        public static final int current_round=0x7f050014;
+        /**  String resources for the current score fragment 
+         */
+        public static final int current_score_title=0x7f050011;
         public static final int end_of_round1=0x7f050009;
         public static final int end_of_round2=0x7f05000a;
         public static final int next_button=0x7f050008;
+        public static final int next_round_button=0x7f050015;
         public static final int no_rebuttal_button=0x7f05000f;
         public static final int pause_button=0x7f050007;
         public static final int rebuttal1=0x7f05000d;
         public static final int rebuttal2=0x7f05000e;
         public static final int red_team_button=0x7f05000c;
-        public static final int rules=0x7f050011;
+        public static final int red_team_score=0x7f050013;
+        public static final int rules=0x7f050016;
         public static final int rules_button=0x7f050002;
         public static final int rules_title=0x7f050003;
         public static final int skip_button=0x7f050006;
