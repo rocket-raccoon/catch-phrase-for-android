@@ -26,7 +26,7 @@ public class standingsFragment extends Fragment {
 				.add(R.id.fragmentContainer, fragment)
 				.commit();
 		}
-		else{
+		else {
 			fragment = new gameFragment();
 			fm.beginTransaction()
 				.replace(R.id.fragmentContainer, fragment)

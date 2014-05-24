@@ -2,6 +2,7 @@ package com.example.catchphrase;
 
 import android.app.Fragment;
 import android.app.FragmentManager;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -29,17 +30,27 @@ public class gameFragment extends Fragment {
 				.add(R.id.fragmentContainer, fragment)
 				.commit();
 		}
-		else {
+		else{
 			fragment = new endRoundFragment();
 			fm.beginTransaction()
 				.replace(R.id.fragmentContainer, fragment)
 				.commit();
-		}	
+		}
+	}
+	
+	private class runTimer extends AsyncTask<Void, Void, Void> {
+		@Override
+		protected Void doInBackground(Void... params) {
+			roundTimer timer = new roundTimer(getActivity());
+			timer.startTimer();
+			return null;
+		}
 	}
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		new runTimer().execute();
 	}
 	
 	@Override
@@ -67,13 +78,12 @@ public class gameFragment extends Fragment {
 		nextButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				endRound();
+				currentPhrase.setText(words.getPhrase());
 			}
 		});
 		
 		return v;
 	}
-
 }
 
 
