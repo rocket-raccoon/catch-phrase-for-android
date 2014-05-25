@@ -38,12 +38,17 @@ public class gameFragment extends Fragment {
 		}
 	}
 	
-	private class runTimer extends AsyncTask<Void, Void, Void> {
+	private class runTimer extends AsyncTask<Void, Void, Integer> {
 		@Override
-		protected Void doInBackground(Void... params) {
+		protected Integer doInBackground(Void... params) {
 			roundTimer timer = new roundTimer(getActivity());
 			timer.startTimer();
-			return null;
+			return 0;
+		}
+		
+		@Override
+		protected void onPostExecute(Integer result) {
+			Toast.makeText(getActivity(), "Round is over!", Toast.LENGTH_LONG).show();
 		}
 	}
 	
