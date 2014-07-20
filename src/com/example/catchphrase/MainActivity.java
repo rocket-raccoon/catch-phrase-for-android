@@ -13,10 +13,8 @@ import android.widget.Button;
 
 public class MainActivity extends Activity implements InGameFragment.GetNextFragment {
 	
-	public static String BLUE_TEAM_SCORE = "Blue Team Score";
-	public static String RED_TEAM_SCORE = "Red Team Score";
-	
 	public static String HOME = "home";
+	public ScoreKeeper sk;
 	
 	public Fragment nextFragment(String whatsNext) {
 		if(whatsNext == homeFragment.RULES) {
@@ -28,16 +26,41 @@ public class MainActivity extends Activity implements InGameFragment.GetNextFrag
 		else if(whatsNext == gameFragment.END_ROUND) {
 			return new endRoundFragment();
 		}
-		else if(whatsNext == endRoundFragment.REBUTTAL) {
+		else if(whatsNext == endRoundFragment.REBUTTAL_AFTER_BLUE_VICTORY) {
+			sk.updateScore(1, "Blue");
 			return new rebuttalFragment();
 		}
-		else if(whatsNext == rebuttalFragment.STANDINGS) {
-			return new standingsFragment();
+		else if(whatsNext == endRoundFragment.REBUTTAL_AFTER_RED_VICTORY) {
+			sk.updateScore(1, "Red");
+			return new rebuttalFragment();
+		}
+		else if(whatsNext == rebuttalFragment.REBUTTAL_YES) {
+			sk.registerRebuttal();
+			Fragment frag = new standingsFragment();
+			Bundle args = new Bundle();
+			args.putInt(standingsFragment.BLUE_SCORE, sk.getBlueTeamScore());
+			args.putInt(standingsFragment.RED_SCORE, sk.getRedTeamScore());
+			args.putInt(standingsFragment.CURRENT_ROUND, sk.getCurrentRound());
+			args.putInt(standingsFragment.MAX_ROUND, sk.getTotalRounds());
+			frag.setArguments(args);
+			return frag;
+		}
+		else if(whatsNext == rebuttalFragment.REBUTTAL_NO) {
+			Fragment frag = new standingsFragment();
+			Bundle args = new Bundle();
+			args.putInt(standingsFragment.BLUE_SCORE, sk.getBlueTeamScore());
+			args.putInt(standingsFragment.RED_SCORE, sk.getRedTeamScore());
+			args.putInt(standingsFragment.CURRENT_ROUND, sk.getCurrentRound());
+			args.putInt(standingsFragment.MAX_ROUND, sk.getTotalRounds());
+			frag.setArguments(args);
+			return frag;
 		}
 		else if(whatsNext == standingsFragment.NEXT_ROUND) {
+			sk.updateRound();
 			return new gameFragment();
 		}
 		else {
+			sk = new ScoreKeeper(10);
 			return new homeFragment();
 		}
 	}

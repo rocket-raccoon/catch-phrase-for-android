@@ -13,7 +13,8 @@ public class rebuttalFragment extends InGameFragment {
 	private Button yesButton;
 	private Button noButton;
 	
-	public static String STANDINGS = "Standings";
+	public static String REBUTTAL_YES = "Yes to rebuttal";
+	public static String REBUTTAL_NO = "No to rebuttal";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -28,7 +29,7 @@ public class rebuttalFragment extends InGameFragment {
 		yesButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mCallback.goNext(STANDINGS);
+				mCallback.goNext(REBUTTAL_YES);
 			}
 		});
 		
@@ -36,7 +37,7 @@ public class rebuttalFragment extends InGameFragment {
 		noButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mCallback.goNext(STANDINGS);
+				mCallback.goNext(REBUTTAL_NO);
 			}
 		});
 		

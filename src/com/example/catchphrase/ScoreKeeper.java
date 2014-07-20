@@ -6,6 +6,7 @@ public class ScoreKeeper {
 	private int redTeamScore;
 	private int currentRound;
 	private int totalRounds;
+	private String lastWinner;
 	
 	public ScoreKeeper(int rounds) {
 		blueTeamScore = 0;
@@ -14,15 +15,33 @@ public class ScoreKeeper {
 		totalRounds = rounds;
 	}
 	
-	private int getBlueTeamScore() {
+	public int getCurrentRound() {
+		return currentRound;
+	}
+	
+	public int getTotalRounds() {
+		return totalRounds;
+	}
+	
+	public int getBlueTeamScore() {
 		return blueTeamScore;
 	}
 	
-	private int getRedTeamScore() {
+	public int getRedTeamScore() {
 		return redTeamScore;
 	}
 	
-	private void updateScore(int amount, String team) {
+	public void registerRebuttal() {
+		if(lastWinner == "Red") {
+			redTeamScore++;
+		}
+		else {
+			blueTeamScore++;
+		}
+	}
+	
+	public void updateScore(int amount, String team) {
+		lastWinner = team;
 		if(team == "Red") {
 			redTeamScore++;
 		}
@@ -31,7 +50,7 @@ public class ScoreKeeper {
 		}
 	}
 	
-	private void updateRound() {
+	public void updateRound() {
 		currentRound++;
 	}
 

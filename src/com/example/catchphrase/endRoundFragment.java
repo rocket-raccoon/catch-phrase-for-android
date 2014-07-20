@@ -15,8 +15,8 @@ public class endRoundFragment extends InGameFragment {
 	private static int RED = 0;
 	private static int BLUE = 1;
 	
-	public static String ROUND_WINNER = "Round Winner";
-	public static String REBUTTAL = "Rebuttal";
+	public static String REBUTTAL_AFTER_BLUE_VICTORY = "Rebuttal, Blue Won Last Round";
+	public static String REBUTTAL_AFTER_RED_VICTORY = "Rebuttal, Red Won Last Round";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class endRoundFragment extends InGameFragment {
 		redTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mCallback.goNext(REBUTTAL);
+				mCallback.goNext(REBUTTAL_AFTER_RED_VICTORY);
 			}
 		});
 		
@@ -39,7 +39,7 @@ public class endRoundFragment extends InGameFragment {
 		blueTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				mCallback.goNext(REBUTTAL);
+				mCallback.goNext(REBUTTAL_AFTER_BLUE_VICTORY);
 			}
 		});
 		
