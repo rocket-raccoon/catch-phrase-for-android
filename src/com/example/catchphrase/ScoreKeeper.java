@@ -53,5 +53,21 @@ public class ScoreKeeper {
 	public void updateRound() {
 		currentRound++;
 	}
-
+	
+	public boolean gameEnded() {
+		if(currentRound == totalRounds) {
+			return true;
+		}
+		return false;
+	}
+	
+	public String getWinner() {
+		if(blueTeamScore > redTeamScore) {
+			return "Blue";
+		}
+		else {
+			return "Red";
+		}
+	}
+	
 }

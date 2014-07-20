@@ -20,12 +20,12 @@
     <string name="yes_rebuttal_button">Yes</string>
     
     <!-- String resources for the current score fragment -->
-    <string name="current_score_title">Current Score</string>
+    <string name="current_score_title">Standings</string>
     <string name="blue_team_score">Blue Team</string>
     <string name="red_team_score">Red Team</string>
     <string name="current_round">Round</string>
-    <string name="next_round_button">Start Next Round!</string>
-    
+    <string name="next_round_button">Next</string>
+    <string name="return_to_home_button_text">Return to Home Page</string>
     
     
     

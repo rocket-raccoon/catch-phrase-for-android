@@ -34,33 +34,34 @@ public class MainActivity extends Activity implements InGameFragment.GetNextFrag
 			sk.updateScore(1, "Red");
 			return new rebuttalFragment();
 		}
-		else if(whatsNext == rebuttalFragment.REBUTTAL_YES) {
-			sk.registerRebuttal();
-			Fragment frag = new standingsFragment();
+		else if(whatsNext == rebuttalFragment.REBUTTAL_YES || whatsNext == rebuttalFragment.REBUTTAL_NO) {
+			//We add another point if rebuttal was successful
+			if(whatsNext == rebuttalFragment.REBUTTAL_YES) {
+				sk.registerRebuttal();
+			}
+			//Set the fragment arguments to display correct standings and return it
 			Bundle args = new Bundle();
 			args.putInt(standingsFragment.BLUE_SCORE, sk.getBlueTeamScore());
 			args.putInt(standingsFragment.RED_SCORE, sk.getRedTeamScore());
 			args.putInt(standingsFragment.CURRENT_ROUND, sk.getCurrentRound());
 			args.putInt(standingsFragment.MAX_ROUND, sk.getTotalRounds());
-			frag.setArguments(args);
-			return frag;
-		}
-		else if(whatsNext == rebuttalFragment.REBUTTAL_NO) {
 			Fragment frag = new standingsFragment();
-			Bundle args = new Bundle();
-			args.putInt(standingsFragment.BLUE_SCORE, sk.getBlueTeamScore());
-			args.putInt(standingsFragment.RED_SCORE, sk.getRedTeamScore());
-			args.putInt(standingsFragment.CURRENT_ROUND, sk.getCurrentRound());
-			args.putInt(standingsFragment.MAX_ROUND, sk.getTotalRounds());
 			frag.setArguments(args);
 			return frag;
 		}
 		else if(whatsNext == standingsFragment.NEXT_ROUND) {
+			if(sk.gameEnded() == true) {
+				Fragment frag = new EndGameFragment();
+				Bundle args = new Bundle();
+				args.putString(EndGameFragment.WINNER, sk.getWinner());
+				frag.setArguments(args);
+				return frag;
+			}
 			sk.updateRound();
 			return new gameFragment();
 		}
 		else {
-			sk = new ScoreKeeper(10);
+			sk = new ScoreKeeper(1);
 			return new homeFragment();
 		}
 	}

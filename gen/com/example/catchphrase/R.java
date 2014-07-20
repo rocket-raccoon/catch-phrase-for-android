@@ -29,32 +29,35 @@ public final class R {
         public static final int red_button=0x7f020005;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000f;
-        public static final int blueTeamButton=0x7f090001;
-        public static final int blue_team_score=0x7f09000b;
-        public static final int currentPhrase=0x7f090003;
-        public static final int current_round=0x7f09000d;
+        public static final int action_settings=0x7f090011;
+        public static final int blueTeamButton=0x7f090003;
+        public static final int blue_team_score=0x7f09000d;
+        public static final int currentPhrase=0x7f090005;
+        public static final int current_round=0x7f09000f;
         public static final int fragmentContainer=0x7f090000;
-        public static final int nextButton=0x7f090006;
-        public static final int noRebuttalButton=0x7f090009;
-        public static final int pauseButton=0x7f090004;
-        public static final int redTeamButton=0x7f090002;
-        public static final int red_team_score=0x7f09000c;
-        public static final int rulesButton=0x7f090008;
-        public static final int skipButton=0x7f090005;
-        public static final int startGameButton=0x7f090007;
-        public static final int start_next_round_button=0x7f09000e;
-        public static final int yesRebuttalButton=0x7f09000a;
+        public static final int game_winner=0x7f090001;
+        public static final int nextButton=0x7f090008;
+        public static final int noRebuttalButton=0x7f09000b;
+        public static final int pauseButton=0x7f090006;
+        public static final int redTeamButton=0x7f090004;
+        public static final int red_team_score=0x7f09000e;
+        public static final int return_to_home_button=0x7f090002;
+        public static final int rulesButton=0x7f09000a;
+        public static final int skipButton=0x7f090007;
+        public static final int startGameButton=0x7f090009;
+        public static final int start_next_round_button=0x7f090010;
+        public static final int yesRebuttalButton=0x7f09000c;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
         public static final int activity_rules=0x7f030001;
-        public static final int end_round_fragment=0x7f030002;
-        public static final int game_fragment=0x7f030003;
-        public static final int home_fragment=0x7f030004;
-        public static final int rebuttal_fragment=0x7f030005;
-        public static final int rules_fragment=0x7f030006;
-        public static final int standings_fragment=0x7f030007;
+        public static final int end_game_fragment=0x7f030002;
+        public static final int end_round_fragment=0x7f030003;
+        public static final int game_fragment=0x7f030004;
+        public static final int home_fragment=0x7f030005;
+        public static final int rebuttal_fragment=0x7f030006;
+        public static final int rules_fragment=0x7f030007;
+        public static final int standings_fragment=0x7f030008;
     }
     public static final class menu {
         public static final int main=0x7f080000;
@@ -81,7 +84,8 @@ public final class R {
         public static final int rebuttal2=0x7f06000e;
         public static final int red_team_button=0x7f06000c;
         public static final int red_team_score=0x7f060013;
-        public static final int rules=0x7f060016;
+        public static final int return_to_home_button_text=0x7f060016;
+        public static final int rules=0x7f060017;
         public static final int rules_button=0x7f060002;
         public static final int rules_title=0x7f060003;
         public static final int skip_button=0x7f060006;
