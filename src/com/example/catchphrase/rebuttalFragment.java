@@ -8,31 +8,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class rebuttalFragment extends Fragment {
+public class rebuttalFragment extends InGameFragment {
 	
 	private Button yesButton;
 	private Button noButton;
 	
+	public static String STANDINGS = "Standings";
+	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	}
-	
-	public void viewStandings() {
-		FragmentManager fm = getFragmentManager();
-		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-		if(fragment == null) {
-			fragment = new standingsFragment();
-			fm.beginTransaction()
-				.add(R.id.fragmentContainer, fragment)
-				.commit();
-		}
-		else{
-			fragment = new standingsFragment();
-			fm.beginTransaction()
-				.replace(R.id.fragmentContainer, fragment)
-				.commit();
-		}
 	}
 	
 	@Override
@@ -43,7 +28,7 @@ public class rebuttalFragment extends Fragment {
 		yesButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				viewStandings();
+				mCallback.goNext(STANDINGS);
 			}
 		});
 		
@@ -51,7 +36,7 @@ public class rebuttalFragment extends Fragment {
 		noButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				viewStandings();
+				mCallback.goNext(STANDINGS);
 			}
 		});
 		

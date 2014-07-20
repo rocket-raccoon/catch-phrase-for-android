@@ -8,31 +8,19 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
-public class endRoundFragment extends Fragment {
+public class endRoundFragment extends InGameFragment {
 	
 	private Button redTeamButton;
 	private Button blueTeamButton;
+	private static int RED = 0;
+	private static int BLUE = 1;
+	
+	public static String ROUND_WINNER = "Round Winner";
+	public static String REBUTTAL = "Rebuttal";
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-	}
-	
-	public void selectRoundWinner() {
-		FragmentManager fm = getFragmentManager();
-		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
-		if(fragment == null) {
-			fragment = new rebuttalFragment();
-			fm.beginTransaction()
-				.add(R.id.fragmentContainer, fragment)
-				.commit();
-		}
-		else {
-			fragment = new rebuttalFragment();
-			fm.beginTransaction()
-				.replace(R.id.fragmentContainer, fragment)
-				.commit();
-		}
 	}
 	
 	@Override
@@ -43,7 +31,7 @@ public class endRoundFragment extends Fragment {
 		redTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				selectRoundWinner();
+				mCallback.goNext(REBUTTAL);
 			}
 		});
 		
@@ -51,7 +39,7 @@ public class endRoundFragment extends Fragment {
 		blueTeamButton.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
-				selectRoundWinner();
+				mCallback.goNext(REBUTTAL);
 			}
 		});
 		
