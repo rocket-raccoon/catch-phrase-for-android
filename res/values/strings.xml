@@ -26,6 +26,7 @@
     <string name="current_round">Round</string>
     <string name="next_round_button">Next</string>
     <string name="return_to_home_button_text">Return to Home Page</string>
+    <string name="round_picker_text">Select the number of rounds to play!</string>
     
     
     

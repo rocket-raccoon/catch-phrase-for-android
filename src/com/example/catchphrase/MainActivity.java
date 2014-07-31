@@ -1,5 +1,7 @@
 package com.example.catchphrase;
 
+import java.util.HashMap;
+
 import android.os.Bundle;
 import android.app.Activity;
 import android.app.Fragment;
@@ -18,11 +20,13 @@ public class MainActivity extends Activity implements InGameFragment.GetNextFrag
 	
 	//This interface receives a communication from the current in game fragment
 	//Based on the string value received, it returns the next fragment to be displayed
-	public Fragment nextFragment(String whatsNext) {
+	public Fragment nextFragment(String whatsNext, HashMap<String, Object>... additionalParams) {
 		if(whatsNext == HomeFragment.RULES) {
 			return new RulesFragment();
 		}
 		else if(whatsNext == HomeFragment.START_GAME) {
+			int numRounds = (Integer) additionalParams[0].get(HomeFragment.NUM_ROUNDS);
+			sk = new ScoreKeeper(numRounds);
 			return new GameFragment();
 		}
 		else if(whatsNext == GameFragment.END_ROUND) {
@@ -38,9 +42,7 @@ public class MainActivity extends Activity implements InGameFragment.GetNextFrag
 		}
 		else if(whatsNext == RebuttalFragment.REBUTTAL_YES || whatsNext == RebuttalFragment.REBUTTAL_NO) {
 			//We add another point if rebuttal was successful
-			if(whatsNext == RebuttalFragment.REBUTTAL_YES) {
-				sk.registerRebuttal();
-			}
+			if(whatsNext == RebuttalFragment.REBUTTAL_YES) sk.registerRebuttal();
 			//Set the fragment arguments to display correct standings and return it
 			Bundle args = new Bundle();
 			args.putInt(StandingsFragment.BLUE_SCORE, sk.getBlueTeamScore());
@@ -62,24 +64,23 @@ public class MainActivity extends Activity implements InGameFragment.GetNextFrag
 			sk.updateRound();
 			return new GameFragment();
 		}
-		else {
-			sk = new ScoreKeeper(1);
-			return new HomeFragment();
-		}
+		else return new HomeFragment();
 	}
 	
 	//We swap out fragments through this function as appropriate
-	public void goNext(String whatsNext) {
+	public void goNext(String whatsNext, HashMap<String, Object>... additionalParams) {
 		FragmentManager fm = getFragmentManager();
 		Fragment fragment = fm.findFragmentById(R.id.fragmentContainer);
 		if(fragment == null) {
-			fragment = nextFragment(whatsNext);
+			if(additionalParams.length > 0) fragment = nextFragment(whatsNext, additionalParams[0]);
+			else fragment = nextFragment(whatsNext);
 			fm.beginTransaction()
 				.add(R.id.fragmentContainer, fragment)
 				.commit();
 		}
 		else{
-			fragment = nextFragment(whatsNext);
+			if(additionalParams.length > 0) fragment = nextFragment(whatsNext, additionalParams[0]);
+			else fragment = nextFragment(whatsNext);
 			fm.beginTransaction()
 				.replace(R.id.fragmentContainer, fragment)
 				.commit();
